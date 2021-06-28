@@ -1,0 +1,57 @@
+[
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsumlib.dir/Einsum.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/Einsum.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/Einsum.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/checkMacrosPlugin.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/checkMacrosPlugin.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/checkMacrosPlugin.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/cudaDriverWrapper.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/cudaDriverWrapper.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/cudaDriverWrapper.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/getOptions.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/getOptions.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/getOptions.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/logger.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/logger.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/logger.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/nmsHelper.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/nmsHelper.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/nmsHelper.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/reducedMathPlugin.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/reducedMathPlugin.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/reducedMathPlugin.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/sampleEngines.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/sampleEngines.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/sampleEngines.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/sampleInference.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/sampleInference.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/sampleInference.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/sampleOptions.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/sampleOptions.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/sampleOptions.cpp"
+},
+{
+  "directory": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8",
+  "command": "/bin/x86_64-linux-gnu-g++-7  -I/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8 -g -std=gnu++11 -o CMakeFiles/einsum_common8_lib.dir/sampleReporting.cpp.o -c /home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/sampleReporting.cpp",
+  "file": "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/einsum_common8/sampleReporting.cpp"
+}
+]

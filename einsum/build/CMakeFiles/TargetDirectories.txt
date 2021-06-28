@@ -1,0 +1,8 @@
+/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/CMakeFiles/rebuild_cache.dir
+/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/CMakeFiles/einsumlib.dir
+/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/CMakeFiles/edit_cache.dir
+/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8/CMakeFiles/rebuild_cache.dir
+/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8/CMakeFiles/einsum_common8_lib.dir
+/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8/CMakeFiles/edit_cache.dir
+/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8/kernels/CMakeFiles/rebuild_cache.dir
+/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build/einsum_common8/kernels/CMakeFiles/edit_cache.dir

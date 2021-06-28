@@ -1,0 +1,2 @@
+/bin/x86_64-linux-gnu-ar qc libeinsumlib.a CMakeFiles/einsumlib.dir/Einsum.cpp.o
+/bin/x86_64-linux-gnu-ranlib libeinsumlib.a

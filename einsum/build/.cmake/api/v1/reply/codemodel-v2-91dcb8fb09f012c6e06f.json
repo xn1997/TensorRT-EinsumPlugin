@@ -1,0 +1,101 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "einsum_common8",
+					"childIndexes" : 
+					[
+						2
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "einsum_common8",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "einsum_common8/kernels",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "einsum_common8/kernels"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "einsum_common8_lib::@d74fa15e658314f54f96",
+					"jsonFile" : "target-einsum_common8_lib-Debug-3718d237bae652e49c1b.json",
+					"name" : "einsum_common8_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "einsumlib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-einsumlib-Debug-0f07c3f3305b026cdd92.json",
+					"name" : "einsumlib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum/build",
+		"source" : "/home/xzy/G/DeepLearning/Gitee/TensorRT/CPP/TensorRT/einsum"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}
