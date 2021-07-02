@@ -255,6 +255,7 @@ public:
 
     //!
     //! \brief getFieldNames
+    //!     返回PluginFieldCollection结构数据，包含添加插件的参数名和类型
     //! \param PluginFieldCollection mFC: 这是成员变量
     //!     主要作用是传递这个op所需要的权重和参数，在engine推理时不会使用，而在parse中使用（比如caffe2trt,onnx2trt），决定了是否可以解析成功。
     //! 当使用parse解析这个op时，这个op的权重和参数会经历Models-->TensorRT engine --> TensorRT runtime的过程。
