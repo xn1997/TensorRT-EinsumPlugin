@@ -13,7 +13,7 @@ find_package(OpenCV  REQUIRED)
 INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
 LINK_LIBRARIES(${OpenCV_LIBS})
 
-add_subdirectory(einsum einsum)
+add_subdirectory(einsum)
 LINK_LIBRARIES(einsumlib)
 
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR})  # 设定h文件路径

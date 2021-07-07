@@ -26,7 +26,7 @@ using nvinfer1::plugin::EinsumCreator;
 
 PluginFieldCollection EinsumCreator::mFC{};
 std::vector<PluginField> EinsumCreator::mPluginAttributes;
-//REGISTER_TENSORRT_PLUGIN(EinsumCreator);
+REGISTER_TENSORRT_PLUGIN(EinsumCreator);
 using namespace nvinfer1::plugin;
 // int main(int argc, char** argv)
 // {
@@ -148,38 +148,40 @@ int Einsum::enqueue(const nvinfer1::PluginTensorDesc* inputDesc,const nvinfer1::
                             void* workspace,
                             cudaStream_t stream) throw()
 {
-    printf("error code enter plugin::enqueue %d\n", (int)cudaGetLastError());
+    // printf("error code enter plugin::enqueue %d\n", (int)cudaGetLastError());
     std::cout << "开始推理\t IN enqueue" << endl;
     const float* x = reinterpret_cast<const float*>(inputs[0]); //! 这里inputs[0]不等于inputs[1]-45
     const float* A = reinterpret_cast<const float*>(inputs[1]);
 
-    float* x1 = (float*)malloc(sizeof(float)*N*C*T*K*V);
-    float* A1 = (float*)malloc(sizeof(float)*K*V*W);
-    cudaMemcpy(x1,x,sizeof(float)*N*C*T*K*V,cudaMemcpyDeviceToHost);
-    cudaMemcpy(A1,A,sizeof(float)*K*V*W,cudaMemcpyDeviceToHost);
-    float A_sum = 0,x_sum=0;
-    std::cout << std::endl << "邻接矩阵A";
-    for(int i=0; i<K*V*W; i++){
-//        printf("%10.3f",A1[i]);
-        A_sum += A1[i];
+    if(false){ // debug时使用,用于打印当前插件推理时的输入输出信息
+        float* x1 = (float*)malloc(sizeof(float)*N*C*T*K*V);
+        float* A1 = (float*)malloc(sizeof(float)*K*V*W);
+        cudaMemcpy(x1,x,sizeof(float)*N*C*T*K*V,cudaMemcpyDeviceToHost);
+        cudaMemcpy(A1,A,sizeof(float)*K*V*W,cudaMemcpyDeviceToHost);
+        float A_sum = 0,x_sum=0;
+        std::cout << std::endl << "邻接矩阵A";
+        for(int i=0; i<K*V*W; i++){
+    //        printf("%10.3f",A1[i]);
+            A_sum += A1[i];
+        }
+        std::cout << std::endl << "输入X";
+        for(int i=0; i<N*C*T*K*V; i++){
+            printf("%10.3f",x1[i]);
+            x_sum += x1[i];
+        }
+        std::cout << std::endl;
+        printf("x_sum: %10.3f\tA_sum: %10.3f\n", x_sum,A_sum);
+        // 打印输入
+        printf("x输入维度为：\t");
+        for(int i = 0; i < inputDesc[0].dims.nbDims; ++i){
+            std::cout << inputDesc[0].dims.d[i] << ' ';
+        }
+        printf("A邻接矩阵维度为：\t");
+        for(int i = 0; i < inputDesc[1].dims.nbDims; ++i){
+            std::cout << inputDesc[1].dims.d[i] << ' ';
+        }
+        std::cout << std::endl;
     }
-    std::cout << std::endl << "输入X";
-    for(int i=0; i<N*C*T*K*V; i++){
-        printf("%10.3f",x1[i]);
-        x_sum += x1[i];
-    }
-    std::cout << std::endl;
-    printf("x_sum: %10.3f\tA_sum: %10.3f\n", x_sum,A_sum);
-    // 打印输入
-    printf("x输入维度为：\t");
-    for(int i = 0; i < inputDesc[0].dims.nbDims; ++i){
-        std::cout << inputDesc[0].dims.d[i] << ' ';
-    }
-    printf("A邻接矩阵维度为：\t");
-    for(int i = 0; i < inputDesc[1].dims.nbDims; ++i){
-        std::cout << inputDesc[1].dims.d[i] << ' ';
-    }
-    std::cout << std::endl;
 //    float* output0 = reinterpret_cast<float*>(outputs[0]);
     cublasHandle_t mCublas; //! 创建cublas句柄
     cublasCreate(&mCublas); //! 这两行是固定写法，不用在意
@@ -199,7 +201,7 @@ int Einsum::enqueue(const nvinfer1::PluginTensorDesc* inputDesc,const nvinfer1::
     }
 
     cublasDestroy(mCublas);
-    printf("error code leave plugin::enqueue %d\n", (int)cudaGetLastError());
+    // printf("error code leave plugin::enqueue %d\n", (int)cudaGetLastError());
     return 0;
 }
 
@@ -227,14 +229,21 @@ void Einsum::serialize(void* buffer) const throw()
 }
 
 //! 检测数据类型和插件格式是否满足要求（自己设计）
+/*  这里绝对不可以直接返回true,因为这个函数的输入并非只是该层输入,有可能是别的输入,如果不加判断直接返回true,那么后续必定出错
+经过实验发现:
+    .format可以区分出输入数据是否是自己指定的该层输入,从而对不是该层输入的数据返回false
+*/
 bool Einsum::supportsFormatCombination(
     int pos, const nvinfer1::PluginTensorDesc* inOut, int nbInputs, int nbOutputs) throw()
 {
-    std::cout << "判断输入输出是否符合要求\t IN supportsFormatCombination" << std::endl;
-//    ASSERT(inOut && pos < (nbInputs + nbOutputs));
-//    return ((inOut[pos].type == nvinfer1::DataType::kFLOAT || inOut[pos].type == nvinfer1::DataType::kHALF)
-//        && inOut[pos].format == nvinfer1::PluginFormat::kNCHW && inOut[pos].type == inOut[0].type);
-    return true;
+    // std::cout << "判断输入输出是否符合要求\t IN supportsFormatCombination" << std::endl;
+    ASSERT(inOut && pos < (nbInputs + nbOutputs));
+    bool res = ((inOut[pos].type == nvinfer1::DataType::kFLOAT || inOut[pos].type == nvinfer1::DataType::kHALF)
+                && inOut[pos].format == nvinfer1::PluginFormat::kLINEAR && inOut[pos].type == inOut[0].type);
+    std::cout << "索引" << pos <<" 判断输入输出是否符合要求\t IN supportsFormatCombination\t" << res << std::endl;
+    // printf("%d\n", inOut[pos].format == nvinfer1::PluginFormat::kLINEAR);
+    return res;
+    // return true;
 }
 
 const char* Einsum::getPluginType() const throw()

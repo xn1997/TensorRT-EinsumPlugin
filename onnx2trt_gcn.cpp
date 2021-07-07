@@ -5,8 +5,8 @@ using namespace std;
 using namespace nvinfer1;
 
 std::string image_path = "../data/tabby_tiger_cat.jpg";
-const char* onnxModelFile = "../gcn.onnx";
-std::string engine_save_path = "../data/gcn.engine";
+const char* onnxModelFile = "../gcn.onnx"; //../gcn.onnx"; //! 指定ONNX模型路径
+std::string engine_save_path = "../data/gcn.engine"; // 指定engine保存路径
 
 const auto explicitBatch = 1U << static_cast<uint32_t>(NetworkDefinitionCreationFlag::kEXPLICIT_BATCH);
 
@@ -31,7 +31,7 @@ int main()
     config->setFlag(BuilderFlag::kSTRICT_TYPES);
 //    config->set
 //    config->setFlag(BuilderFlag::kTF32);
-//    builder->setHalf2Mode(false);
+   builder->setHalf2Mode(true);
 
     std::unique_ptr<ICudaEngine, InferDeleter> engine(builder->buildEngineWithConfig(*network, *config));
     // 4. 保存engine（文件名后缀可任意定）
@@ -43,7 +43,27 @@ int main()
     }
     printf("modelStream->size():%d\n", modelStream->size());
     p.write(reinterpret_cast<const char*>(modelStream->data()), modelStream->size());
-//    return 0;
+
+    //! 测试反序列化模型
+    std::ifstream engineFile(engine_save_path, std::ios::binary);
+    if(!engineFile){
+        std::cout << "Error opening engine file: " << engine_save_path << std::endl;
+        return false;
+    }
+    engineFile.seekg(0, engineFile.end); //! 将读指针定位至文件末尾
+    long int fsize = engineFile.tellg(); //! 读取当前指针的位置，即文件的大小
+    engineFile.seekg(0, engineFile.beg); //! 将读指针重新移至文件开头
+
+    std::vector<char> engineData(fsize);
+    engineFile.read(engineData.data(), fsize);
+    if (!engineFile)
+    {
+        std::cout << "Error loading engine file: " << engine_save_path << std::endl;
+        return false;
+    }
+    std::unique_ptr<IRuntime, InferDeleter> runtime(createInferRuntime(gLogger));
+    engine = std::unique_ptr<ICudaEngine, InferDeleter>(runtime->deserializeCudaEngine(engineData.data(), fsize));
+
     // 5. 生成context
     std::unique_ptr<IExecutionContext, InferDeleter> context(engine->createExecutionContext());
 
@@ -116,7 +136,7 @@ int main()
     cudaStreamDestroy(stream);
 
     for(std::vector<float>::iterator it=output_cpu_data[0].begin(); it!=output_cpu_data[0].end();it++){
-//        std::cout << *it << std::endl;
+       std::cout << *it << std::endl;
     }
     std::cout << output_cpu_data[0].size() <<"\t " << \
                                              std::accumulate(output_cpu_data[0].begin(), output_cpu_data[0].end(),0) << std::endl;
